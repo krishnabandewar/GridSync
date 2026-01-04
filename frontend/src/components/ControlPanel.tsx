@@ -1,9 +1,11 @@
 import React from 'react';
 
+import { API_BASE_URL } from '@/config';
+
 export const ControlPanel: React.FC = () => {
     const triggerEvent = async (type: string) => {
         try {
-            await fetch(`http://127.0.0.1:8080/api/market/event/${type}`, { method: 'POST' });
+            await fetch(`${API_BASE_URL}/api/market/event/${type}`, { method: 'POST' });
         } catch (error) {
             console.error('Failed to trigger event', error);
         }

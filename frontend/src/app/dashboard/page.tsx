@@ -7,8 +7,10 @@ import { MarketMain } from '@/components/MarketMain';
 import { SystemEvents } from '@/components/SystemEvents';
 import { ControlPanel } from '@/components/ControlPanel';
 
+import { API_BASE_URL } from '@/config';
+
 export default function Dashboard() {
-    const { data, status, error } = useMarketStream('http://127.0.0.1:8080/api/market/stream');
+    const { data, status, error } = useMarketStream(`${API_BASE_URL}/api/market/stream`);
 
     if (!data) {
         return (
