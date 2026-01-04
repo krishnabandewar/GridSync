@@ -1,0 +1,148 @@
+:root {
+  --bg-primary: #050505;
+  --bg-secondary: #0a0a0a;
+  --bg-card: #111111;
+  
+  --text-primary: #ffffff;
+  --text-secondary: #a1a1aa;
+  
+  --accent-cyan: #06b6d4;
+  --accent-green: #10b981;
+  --accent-pink: #ec4899;
+  
+  --glass: rgba(255, 255, 255, 0.03);
+  --glass-border: rgba(255, 255, 255, 0.08);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  background: var(--bg-primary);
+  color: var(--text-primary);
+  font-family: 'Inter', sans-serif;
+  margin: 0;
+  padding: 0;
+  height: 100vh;
+  overflow: hidden;
+}
+
+h1, h2, h3 {
+  margin: 0;
+  font-weight: 600;
+}
+
+.dashboard-container {
+  display: grid;
+  grid-template-columns: 350px 1fr 300px; /* Sidebar, Map/Chart, OrderBook */
+  grid-template-rows: 70px 1fr;
+  height: 100vh;
+  gap: 12px;
+  padding: 12px;
+}
+
+.header {
+  grid-column: 1 / -1;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 24px;
+}
+
+.logo {
+  font-size: 1.5rem;
+  letter-spacing: -0.05em;
+  background: linear-gradient(to right, var(--accent-cyan), var(--accent-green));
+  -webkit-background-clip: text;
+  color: transparent;
+  font-weight: 700;
+}
+
+/* Glass Card */
+.card {
+  background: var(--glass);
+  backdrop-filter: blur(12px);
+  border: 1px solid var(--glass-border);
+  border-radius: 16px;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  transition: border-color 0.3s ease;
+}
+
+.card:hover {
+  border-color: rgba(255, 255, 255, 0.15);
+}
+
+.scrollable {
+  overflow-y: auto;
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+}
+::-webkit-scrollbar-track {
+  background: transparent; 
+}
+::-webkit-scrollbar-thumb {
+  background: #333; 
+  border-radius: 3px;
+}
+
+/* Node List */
+.node-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 12px;
+  margin-bottom: 8px;
+  border-radius: 8px;
+  background: rgba(255, 255, 255, 0.02);
+  transition: all 0.2s;
+  cursor: default;
+}
+
+.node-item:hover {
+  background: rgba(255, 255, 255, 0.05);
+  transform: translateX(2px);
+}
+
+.node-icon {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-right: 12px;
+  font-size: 1.2rem;
+}
+
+.producer { color: var(--accent-green); background: rgba(16, 185, 129, 0.1); }
+.consumer { color: var(--accent-pink); background: rgba(236, 72, 153, 0.1); }
+
+.value-positive { color: var(--accent-pink); }
+.value-negative { color: var(--accent-green); }
+
+/* Chart Area */
+.main-stage {
+  position: relative;
+}
+
+.price-display {
+  font-size: 3.5rem;
+  font-weight: 700;
+  color: var(--text-primary);
+  letter-spacing: -0.02em;
+}
+
+.price-label {
+  color: var(--text-secondary);
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  letter-spacing: 0.2em;
+  margin-bottom: 8px;
+}
